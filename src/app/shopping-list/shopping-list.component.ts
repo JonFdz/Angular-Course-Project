@@ -8,6 +8,7 @@ import { Ingredient } from '../shared/ingredient.model';
 	styleUrl: './shopping-list.component.scss'
 })
 export class ShoppingListComponent implements OnInit {
+
 	ingredients: Ingredient[] = [
 		new Ingredient('Apples', 5),
 		new Ingredient('Tomatoes', 10),
@@ -19,7 +20,7 @@ export class ShoppingListComponent implements OnInit {
 	}
 
 	onIngredientAdded(ingredient: Ingredient) {
-		this.ingredients.push(ingredient);
+		this.ingredients.push(new Ingredient(ingredient.name, ingredient.amount));
 	}
 
 }
