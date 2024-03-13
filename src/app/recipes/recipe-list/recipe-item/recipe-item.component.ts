@@ -1,7 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Recipe } from '../../recipe.model';
-import { OutletContext } from '@angular/router';
+import { RecipeService } from '../../recipe.service';
 
 @Component({
   selector: 'app-recipe-item',
@@ -11,10 +11,10 @@ import { OutletContext } from '@angular/router';
 export class RecipeItemComponent {
 
 	@Input() recipe: Recipe;
-	@Output() recipeSelected = new EventEmitter<Recipe>();
+
+	constructor(private recipeService: RecipeService) { }
 
 	onSelected() {
-		console.log('Recipe item clicked');
-		this.recipeSelected.emit();
+		this.recipeService.recipeSelected.emit(this.recipe);
 	}
 }
